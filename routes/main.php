@@ -1,5 +1,5 @@
 <?php
 
-$app->router->get("/", function () {
-    return view("home");
-});
+use OSN\Colorful\Http\Controllers\AppController;
+
+$app->router->get("/", [AppController::class, "index"]);
