@@ -2,7 +2,7 @@
     "name": "osn/colorful",
     "description": "Colorful Forums",
     "type": "project",
-    "license": "GPL-3.0-or-later",
+    "license": "AGPL-3.0-or-later",
     "scripts": {
         "serve": "@php -S localhost:8080 -t public"
     },
