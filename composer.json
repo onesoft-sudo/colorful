@@ -9,7 +9,8 @@
     "autoload": {
         "psr-4": {
             "OSN\\Colorful\\": "src/"
-        }
+        },
+        "files": ["src/functions.php"]
     },
     "authors": [
         {

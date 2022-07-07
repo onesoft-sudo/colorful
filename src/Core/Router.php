@@ -11,6 +11,16 @@ class Router
         
     }
     
+    public function get(string $route, callable $callback)
+    {
+        $this->routes["GET"][$route] = $callback;
+    }
+    
+    public function post(string $route, callable $callback)
+    {
+        $this->routes["POST"][$route] = $callback;
+    }
+    
     public function resolve()
     {
         $uri = $this->request->uri;
