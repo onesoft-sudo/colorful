@@ -19,6 +19,7 @@ class App
     
     public function run()
     {
-        echo $this->router->resolve();
+        $response = $this->router->resolve();
+        echo $response();
     }
 }

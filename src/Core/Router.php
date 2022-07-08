@@ -21,7 +21,7 @@ class Router
         $this->routes["POST"][$route] = $callback;
     }
     
-    public function resolve()
+    public function resolve(): Response
     {
         $uri = $this->request->uri;
         $method = $this->request->method;
@@ -29,14 +29,19 @@ class Router
         $callback = $this->routes[$method][$uri] ?? null;
         
         if (!$callback) {
-            header("HTTP/1.1 404 Not Found");
-            return "404 Not Found";
+            return new Response(404, "Not Found", "404 Not Found");
         }
         
         if (is_array($callback)) {
             $callback[0] = new $callback[0]();
         }
         
-        return call_user_func($callback, $this->request);
+        $output = call_user_func($callback, $this->request);
+        
+        if (!$output instanceof Response) {
+            return new Response(200, "OK", $output);
+        }
+        
+        return $output;
     }
 }
