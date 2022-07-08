@@ -28,6 +28,10 @@ class View
             $this->title = $title;
         };
         
+        $setLayout = function (string $name) {
+            $this->layout = $name;
+        };
+        
         ob_start();
         
         if (!is_file($this->viewDir() . "/" . str_replace(".", "/", $name) . ".php")) {

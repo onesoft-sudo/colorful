@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+      
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onesoft-sudo/colorful.git"
+  },
+  "author": "",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/onesoft-sudo/colorful/issues"
+  },
+  "homepage": "https://github.com/onesoft-sudo/colorful#readme"
+}
