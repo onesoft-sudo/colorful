@@ -34,6 +34,24 @@ class Router
         
         if (is_array($callback)) {
             $callback[0] = new $callback[0]();
+            $middleware = $callback[0]->middleware;
+            
+            foreach ($middleware as $m) {
+                $exit = true;
+                
+                $response = $m->handle($this->request, function (Request $request) use ($exit) {
+                    $exit = false;
+                    $this->request = $request;
+                });
+                
+                if ($response) {
+                    return $response instanceof Response ? $response : new Response(200, "OK", $response);
+                }
+                
+                if ($exit) {
+                    break;
+                }
+            }
         }
         
         $output = call_user_func($callback, $this->request);
